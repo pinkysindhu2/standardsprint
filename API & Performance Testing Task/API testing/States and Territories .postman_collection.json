@@ -1,0 +1,84 @@
+{
+	"info": {
+		"_postman_id": "d67a38c3-532a-4e32-af98-864ad721a5ba",
+		"name": "States and Territories ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "list of all States and territories of a country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/state/get/IND/all",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"state",
+						"get",
+						"IND",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search state of a country",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/state/get/IND/UP",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"state",
+						"get",
+						"IND",
+						"UP"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search state by any free form text",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/state/search/IND?text=pradesh",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"state",
+						"search",
+						"IND"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "pradesh"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

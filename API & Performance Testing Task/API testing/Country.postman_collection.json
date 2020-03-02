@@ -1,0 +1,105 @@
+{
+	"info": {
+		"_postman_id": "d8adde5d-efa7-4ae2-8824-b3ea79ba631a",
+		"name": "Country",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List of all the countries",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/country/get/all",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"country",
+						"get",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search country by 2 character alphanumeric ISO code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/country/get/iso2code/IN",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"country",
+						"get",
+						"iso2code",
+						"IN"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search country by 3 character alphanumeric ISO code",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/country/get/iso2code/IND",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"country",
+						"get",
+						"iso2code",
+						"IND"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "search country by 3 character ISO code or 2 character ISO code or country name",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://services.groupkt.com/country/search?text=un",
+					"protocol": "http",
+					"host": [
+						"services",
+						"groupkt",
+						"com"
+					],
+					"path": [
+						"country",
+						"search"
+					],
+					"query": [
+						{
+							"key": "text",
+							"value": "un"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}

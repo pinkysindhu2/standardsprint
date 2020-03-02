@@ -1,0 +1,285 @@
+{
+	"info": {
+		"_postman_id": "4339867f-a896-4e65-80e2-582a9214a841",
+		"name": "Dummy Rest Api Example",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Verify Create Employee With Vaild Data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a18088a2-959e-455a-a2a4-8e04710300b0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"",
+							"pm.test(\"Create the Employee\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"postman3\");",
+							"    pm.expect(jsonData.salary).to.eql(\"123.00\");",
+							"    pm.expect(jsonData.age).to.eql(\"32\");",
+							"});",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postman3\",\n    \"salary\": \"123.00\",\n    \"age\": \"32\"\n}"
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/create",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"create"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch All Employees Records",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "a5837ce4-1a7c-49b8-bb94-b51069658980",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Content Type is application/json type\", function(){",
+							"   pm.response.to.have.header(\"Content Type\").to.eql(\"application/json\");",
+							"});",
+							"",
+							"let parsedResponseBody = JSON.parse(responseBody);",
+							"tests['JSON is not empty'] = (parsedResponseBody.length > 0);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employees",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employees"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Fetch Single Employee Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "c0448816-1869-447a-9652-a48db44169d9",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"pm.test(\"Fetch the Employee\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.employee_name).to.eql(\"postmantest\");",
+							"    pm.expect(jsonData.employee_salary).to.eql(\"123\");",
+							"    pm.expect(jsonData.employee_age).to.eql(\"32\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/employee/34",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"employee",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Single Employee Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e02e15fa-c58c-4198-b17d-6f3b02edae68",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Verify the Employee is Updated\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.name).to.eql(\"postmantest1\");",
+							"    pm.expect(jsonData.salary).to.eql(\"123.00\");",
+							"    pm.expect(jsonData.age).to.eql(\"23\");",
+							"    ",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"postmantest1\",\n    \"salary\": \"123.00\",\n    \"age\": \"23\"\n}"
+				},
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/update/34",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"update",
+						"34"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Single Employee Record",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "915e7f80-278c-4be0-999c-ad92be538dc0",
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"pm.test(\"Verify the Delete Record\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData.success.text).to.eql(\"successfully! deleted Records\");",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://dummy.restapiexample.com/api/v1/delete/34",
+					"protocol": "http",
+					"host": [
+						"dummy",
+						"restapiexample",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"delete",
+						"34"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "633408d7-5b2c-4d44-8723-865d514d3445",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "66df13ad-cc8d-4589-8129-a71e5508f942",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
