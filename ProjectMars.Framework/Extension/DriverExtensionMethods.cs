@@ -1,5 +1,6 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
+using ProjectMars.Framework.CustomExceptions;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -29,9 +30,31 @@ namespace ProjectMars.Framework.Extension
             
         }
 
+        public static IList<IWebElement> WaitForElements(this IWebDriver driver, By ele, int timeOutinSeconds = 20)
+        {
+            IList<IWebElement> list;
+            try
+            {
+                WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(timeOutinSeconds));
+                list = (wait.Until(ExpectedConditions.VisibilityOfAllElementsLocatedBy(ele)));
+                
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine(ex);
+                throw new TimeOutException("List is empty!!");
+            }
+            return list;
+        }
+
         public static void pageLoad(this IWebDriver driver, int timeOutinSeconds = 30)
         {
             driver.Manage().Timeouts().PageLoad = TimeSpan.FromSeconds(timeOutinSeconds);
+        }
+
+        public static IWebElement FindElementWithText(this IWebDriver driver, string tagName, string text)
+        {
+            return driver.WaitForElement(By.XPath("//"+tagName+"[contains(text(),'"+text+"')]"));
         }
     }
 }

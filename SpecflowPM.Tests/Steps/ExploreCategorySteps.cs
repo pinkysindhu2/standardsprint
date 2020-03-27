@@ -16,7 +16,7 @@ namespace SpecflowPM.Tests.Steps
     public class ExploreCategorySteps
     {
         private readonly IWebDriver Driver;
-        private Category category;
+        private readonly Category category;
         private SearchService SearchService;
 
         public ExploreCategorySteps(IWebDriver driver)
@@ -44,19 +44,29 @@ namespace SpecflowPM.Tests.Steps
                SearchService = category.SearchCateory(cat.CategoryName);
            }*/
 
-        [When(@"I click on Category (.*)")]
-        public void WhenIClickOnCategoryGraphicDesign(string cat)
+        [When(@"I click on (.*) and (.*)")]
+        public void WhenIClickOnGraphicsDesignAndLogoDesign(string cat, string subcat)
         {
             SearchService = category.SearchCateory(cat);
+            SearchService.ClickOnSubCategory(subcat);
         }
 
-        [Then(@"I should successfully view service per (.*) and (.*)")]
-        public void ThenIShouldSuccessfullyViewServicePerGraphicDesignAnd(string cat, int index)
+        [Then(@"I should successfully view service per (.*), (.*) and (.*)")]
+        public void ThenIShouldSuccessfullyViewServicePerGraphicsDesignAnd(string cat, int index, int subIndex)
         {
             Thread.Sleep(10);
-            SearchService.VerifyCategorySearch(cat, index);
+            SearchService.VerifyCategorySearch(cat, index, subIndex);
             Thread.Sleep(10);
         }
+
+
+        /*    [Then(@"I should successfully view service per (.*) and (.*)")]
+            public void ThenIShouldSuccessfullyViewServicePerGraphicDesignAnd(string cat, int index)
+            {
+                Thread.Sleep(10);
+                SearchService.VerifyCategorySearch(cat, index);
+                Thread.Sleep(10);
+            }*/
 
     }
 }

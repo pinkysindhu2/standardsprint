@@ -7,22 +7,24 @@ using System.Threading;
 using NUnit.Framework;
 using ProjectMars.Framework.Extension;
 using OpenQA.Selenium.Interactions;
+using SpecflowPM.Tests.Pages;
+
 
 namespace SpecflowPM.Tests.Pages
 {
     public class Category : BasePage
     {
         private readonly IWebDriver Driver;
-
+        
         public Category(IWebDriver driver)
         {
             this.Driver = driver;
         }
 
         #region Initialize the WebElements
-
+        IWebElement searchBtn => Driver.WaitForElement(By.XPath("//div[@class='main-search']/descendant::button"));
         private IWebElement exploreCategory => Driver.WaitForElement(By.XPath("//h3[contains(text(),'Explore categories>')]"));
-        private IWebElement GraphicDesign => Driver.FindElement(By.XPath("//div[@class='ui grid explore-category']//div[1]//div[1]"));
+        private IWebElement GraphicDesign => Driver.WaitForElement(By.XPath("//div[@class='ui grid explore-category']//div[1]//div[1]"));
 
         private IWebElement digitalMarketing => Driver.WaitForElement(By.XPath("//div[@class='ui grid explore-category']//div[1]//div[2]"));
 
@@ -39,12 +41,18 @@ namespace SpecflowPM.Tests.Pages
         private IWebElement funLifestyle => Driver.WaitForElement(By.XPath("//div[@class='ui grid explore-category']//div[2]//div[4]"));
         #endregion
 
-       public void scrollDownToCategory()
-       {
+        public SearchService ClickOnSearchBtn()
+        {
+            searchBtn.Click();
+            Driver.pageLoad();
+            return new SearchService(Driver);
+        }
+        public void scrollDownToCategory()
+        {
             Actions actions = new Actions(Driver);
             actions.MoveToElement(exploreCategory);
             actions.Perform();
-       }
+        }
 
        public SearchService SearchCateory(string cat)
        {

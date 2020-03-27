@@ -35,7 +35,7 @@ namespace SpecflowPM.Tests.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ExploreCategories", "\tFeature related to Seach Skills according to Categories and Subcategories", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ExploreCategories", "\tFeature related to Search Skills according to Categories and Subcategories", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,15 +75,48 @@ namespace SpecflowPM.Tests.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search skills per category")]
-        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", null)]
-        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", null)]
-        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", null)]
-        [NUnit.Framework.TestCaseAttribute("Video Animation", "4", null)]
-        [NUnit.Framework.TestCaseAttribute("Music Audio", "5", null)]
-        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", null)]
-        [NUnit.Framework.TestCaseAttribute("Business", "7", null)]
-        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", null)]
-        public virtual void SearchSkillsPerCategory(string categoryName, string categoryIndex, string[] exampleTags)
+        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Logo Design", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Book & Album covers", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Flyers & Brochures", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Web & Mobile Design", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Search & Display Marketing", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", "Social Media Marketing", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", "Content Marketing", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", "Video Marketing", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", "Email Marketing", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Digital Marketing", "2", "Search & Display Marketing", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", "Resumes & Cover Letters", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", "Proof Reading & Editing", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", "Translation", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", "Creative Writing", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Writing Translation", "3", "Business Copywriting", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Video Animation", "4", "Promotional Videos", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Video Animation", "4", "Editing & Post Production", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Video Animation", "4", "Lyric & Music Videos", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Video Animation", "4", "Other", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Music Audio", "5", "Mixing & Mastering", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Music Audio", "5", "Voice Over", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Music Audio", "5", "Song Writers & Composers", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Music Audio", "5", "Other", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "WordPress", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "Web & Mobile App", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "Data Analysis & Reports", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "QA", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "Databases", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Programming Tech", "6", "Other", "6", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Business Tips", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Presentations", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Market Advice", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Legal Consulting", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Financial Consulting", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Business", "7", "Other", "6", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Online Lessons", "1", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Relationship Advice", "2", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Astrology", "3", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Health, Nutrition & Fitness", "4", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Gaming", "5", null)]
+        [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Other", "6", null)]
+        public virtual void SearchSkillsPerCategory(string categoryName, string categoryIndex, string subCategoryName, string subCategoryIndex, string[] exampleTags)
         {
             string[] tagsOfScenario = exampleTags;
             TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search skills per category", null, exampleTags);
@@ -114,10 +147,10 @@ this.ScenarioInitialize(scenarioInfo);
  testRunner.And("I scroll down to Explore category", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
 #line 22
- testRunner.When(string.Format("I click on Category {0}", categoryName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+ testRunner.When(string.Format("I click on {0} and {1}", categoryName, subCategoryName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
 #line 23
- testRunner.Then(string.Format("I should successfully view service per {0} and {1}", categoryName, categoryIndex), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+ testRunner.Then(string.Format("I should successfully view service per {0}, {1} and {2}", categoryName, categoryIndex, subCategoryIndex), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

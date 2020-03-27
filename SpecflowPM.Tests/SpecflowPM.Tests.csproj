@@ -31,12 +31,21 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>ExploreCategories.feature</DependentUpon>
     </Compile>
+    <Compile Update="Feature\FilterSearchSkill.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilterSearchSkill.feature</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
     <SpecFlowFeatureFiles Update="Feature\ExploreCategories.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>ExploreCategories.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\FilterSearchSkill.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FilterSearchSkill.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 

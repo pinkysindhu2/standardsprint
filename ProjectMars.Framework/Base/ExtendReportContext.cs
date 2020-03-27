@@ -18,7 +18,6 @@ namespace ProjectMars.Framework.Base
             var htmlReporter = new ExtentHtmlReporter(path);
             htmlReporter.Config.Theme = AventStack.ExtentReports.Reporter.Configuration.Theme.Dark;
             ExtentReport.AttachReporter(htmlReporter); 
-
         }
 
     }
