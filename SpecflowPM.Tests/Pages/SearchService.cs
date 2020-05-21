@@ -36,7 +36,7 @@ namespace SpecflowPM.Tests.Pages
 
         private IList<IWebElement> ResultList => Driver.WaitForElements(By.XPath("//section[@class='search-results']/descendant::div[@class='twelve wide column']/div[@class='ui grid']/descendant::div[@class='ui stackable three cards']/div[@class='ui card']"));
 
-        private IWebElement ResultMessage => Driver.WaitForElement(By.XPath("//section[@class='search-results']/descendant::div[@class='twelve wide column']/div[@class='ui grid']"));
+        private IWebElement ResultMessage => Driver.WaitForElement(By.XPath("//section[@class='search-results']/descendant::div[@class='twelve wide column']/div[@class='ui grid']/h3"));
 
         // Filter web elements
         private IWebElement online => Driver.FindElementWithText("button", "Online");
@@ -317,12 +317,11 @@ namespace SpecflowPM.Tests.Pages
         private bool isResultListEmptyOrMsg()
         {
             bool resultStatus = false;
-            /* if(ResultArea.Displayed && ResultArea.Enabled)
+/*            if(ResultArea.Displayed && ResultArea.Enabled)
              {
-                 Driver.wait(10);
-                 ResultList = ResultArea.FindElements(By.XPath("//descendant::div[@class='ui stackable three cards']/div[@class='ui card']"));
-                 ResultMessage = ResultArea.FindElement(By.TagName("h3"));
+                 Console.WriteLine("Length of ARea "+ ResultArea.FindElement())
              }*/
+             
             if (ResultList.Count > 0)
             {
                 resultStatus = true;

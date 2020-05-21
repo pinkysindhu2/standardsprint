@@ -1,21 +1,7 @@
-﻿Feature: ExploreCategories
+﻿Feature: CatSubcatSearch
 	Feature related to Search Skills according to Categories and Subcategories
 
-#Scenario Outline: Search skills per category
-#	Given I visit to Home page
-#	And I scroll down to Explore category
-#	When I click on Category
-#	| CategoryName          | CategoryIndex |
-#	| Graphic Design        | 1             |
-#	| Digital Marketing     | 2             |
-#	| Writing  Translation	| 3             |
-#	| Video  Animation		| 4             |
-#	| Music Audio           | 5             |
-#	| Programming Tech      | 6             |
-#	| Business              | 7             |
-#	| Fun  Lifestyle		| 8             |
-#	Then I should successfully view service per category
-
+@Search
 Scenario Outline: Search skills per category
 	Given I visit to Home page
 	And I scroll down to Explore category
@@ -132,3 +118,18 @@ Examples:
 
 
 
+
+#Scenario Outline: Search skills per category
+#	Given I visit to Home page
+#	And I scroll down to Explore category
+#	When I click on Category
+#	| CategoryName          | CategoryIndex |
+#	| Graphic Design        | 1             |
+#	| Digital Marketing     | 2             |
+#	| Writing  Translation	| 3             |
+#	| Video  Animation		| 4             |
+#	| Music Audio           | 5             |
+#	| Programming Tech      | 6             |
+#	| Business              | 7             |
+#	| Fun  Lifestyle		| 8             |
+#	Then I should successfully view service per category

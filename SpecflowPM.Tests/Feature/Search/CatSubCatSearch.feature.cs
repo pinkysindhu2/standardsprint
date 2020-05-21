@@ -10,7 +10,7 @@
 // ------------------------------------------------------------------------------
 #region Designer generated code
 #pragma warning disable
-namespace SpecflowPM.Tests.Feature
+namespace SpecflowPM.Tests.Feature.Search
 {
     using TechTalk.SpecFlow;
     using System;
@@ -20,22 +20,22 @@ namespace SpecflowPM.Tests.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.1.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("ExploreCategories")]
-    public partial class ExploreCategoriesFeature
+    [NUnit.Framework.DescriptionAttribute("CatSubcatSearch")]
+    public partial class CatSubcatSearchFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
         private string[] _featureTags = ((string[])(null));
         
-#line 1 "ExploreCategories.feature"
+#line 1 "CatSubCatSearch.feature"
 #line hidden
         
         [NUnit.Framework.OneTimeSetUpAttribute()]
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "ExploreCategories", "\tFeature related to Search Skills according to Categories and Subcategories", ProgrammingLanguage.CSharp, ((string[])(null)));
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "CatSubcatSearch", "\tFeature related to Search Skills according to Categories and Subcategories", ProgrammingLanguage.CSharp, ((string[])(null)));
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,6 +75,7 @@ namespace SpecflowPM.Tests.Feature
         
         [NUnit.Framework.TestAttribute()]
         [NUnit.Framework.DescriptionAttribute("Search skills per category")]
+        [NUnit.Framework.CategoryAttribute("Search")]
         [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Logo Design", "1", null)]
         [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Book & Album covers", "2", null)]
         [NUnit.Framework.TestCaseAttribute("Graphics Design", "1", "Flyers & Brochures", "3", null)]
@@ -118,9 +119,15 @@ namespace SpecflowPM.Tests.Feature
         [NUnit.Framework.TestCaseAttribute("Fun Lifestyle", "8", "Other", "6", null)]
         public virtual void SearchSkillsPerCategory(string categoryName, string categoryIndex, string subCategoryName, string subCategoryIndex, string[] exampleTags)
         {
-            string[] tagsOfScenario = exampleTags;
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search skills per category", null, exampleTags);
-#line 19
+            string[] @__tags = new string[] {
+                    "Search"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Search skills per category", null, @__tags);
+#line 5
 this.ScenarioInitialize(scenarioInfo);
 #line hidden
             bool isScenarioIgnored = default(bool);
@@ -140,16 +147,16 @@ this.ScenarioInitialize(scenarioInfo);
             else
             {
                 this.ScenarioStart();
-#line 20
+#line 6
  testRunner.Given("I visit to Home page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 21
+#line 7
  testRunner.And("I scroll down to Explore category", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
 #line hidden
-#line 22
+#line 8
  testRunner.When(string.Format("I click on {0} and {1}", categoryName, subCategoryName), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 23
+#line 9
  testRunner.Then(string.Format("I should successfully view service per {0}, {1} and {2}", categoryName, categoryIndex, subCategoryIndex), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }

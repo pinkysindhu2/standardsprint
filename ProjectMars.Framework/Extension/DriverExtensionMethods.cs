@@ -41,8 +41,9 @@ namespace ProjectMars.Framework.Extension
             }
             catch (Exception ex)
             {
-                //Console.WriteLine(ex);
-                throw new TimeOutException("List is empty!!");
+                //Console.WriteLine(ex)
+                list = driver.FindElements(ele);
+                //throw new TimeOutException("List is empty!!");
             }
             return list;
         }
@@ -56,5 +57,6 @@ namespace ProjectMars.Framework.Extension
         {
             return driver.WaitForElement(By.XPath("//"+tagName+"[contains(text(),'"+text+"')]"));
         }
+
     }
 }

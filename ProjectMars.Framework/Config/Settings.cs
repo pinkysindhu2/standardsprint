@@ -18,5 +18,6 @@ namespace ProjectMars.Framework.Config
 
         [JsonProperty(PropertyName = "ConfigPath")]
         public static string ConfigPath { get; set; }
+
     }
 }

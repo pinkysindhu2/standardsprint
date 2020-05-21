@@ -8,7 +8,7 @@ using System.Text;
 
 namespace ProjectMars.Framework.Helper
 {
-    public class ExcelDataReader
+    public class ExcelHelper
     {
         public static List<Datacollection> dataCol = new List<Datacollection>();
 
@@ -29,7 +29,7 @@ namespace ProjectMars.Framework.Helper
         protected static DataTable ExcelToDataTable(string fileName, string SheetName)
         {
             // Open file and return as Stream
-
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             using (var stream = File.Open(fileName, FileMode.Open, FileAccess.Read))
             {
 
@@ -83,7 +83,7 @@ namespace ProjectMars.Framework.Helper
 
         public static void PopulateInCollection(string fileName, string SheetName)
         {
-            ExcelDataReader.ClearData();
+            ExcelHelper.ClearData();
             DataTable table = ExcelToDataTable(fileName, SheetName);
 
             //Iterate through the rows and columns of the Table

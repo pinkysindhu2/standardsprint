@@ -25,12 +25,6 @@ namespace SpecflowPM.Tests.Steps
             category = new Category(Driver);
         }
 
-        [Given(@"I visit to Home page")]
-        public void GivenIVisitToHomePage()
-        {
-            Driver.Navigate().GoToUrl(Settings.DockerBaseURL);
-        }
-
         [Given(@"I scroll down to Explore category")]
         public void GivenIScrollDownToExploreCategory()
         {

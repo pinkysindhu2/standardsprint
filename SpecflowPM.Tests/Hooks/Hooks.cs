@@ -13,14 +13,15 @@ using System.Collections.Generic;
 using ProjectMars.Framework.Base;
 using SpecflowFeature = AventStack.ExtentReports.Gherkin.Model;
 using AventStack.ExtentReports.Gherkin.Model;
+using SpecflowPM.Tests.Pages.Home;
+using SpecflowPM.Tests.Pages.Account;
+using Settings = ProjectMars.Framework.Config.Settings;
 
 namespace SpecflowPM.Tests.Hooks
 {
     [Binding]
-    public sealed class Hooks
+    public sealed class Hooks: Config.PageInstances
     {
-        // For additional details on SpecFlow hooks see http://go.specflow.org/doc-hooks
-
         private static ExtentTest _featureName;
         private static ExtentTest _scenario;
 
@@ -34,9 +35,14 @@ namespace SpecflowPM.Tests.Hooks
         }
 
         [BeforeFeature]
-        public static void BeforeFeature(FeatureContext featureContext)
+        public static void BeforeFeature(FeatureContext featureContext, IWebDriver driver)
         {
             _featureName = ExtendReportContext.ExtentReport.CreateTest<SpecflowFeature.Feature>(featureContext.FeatureInfo.Title);
+            driver.Navigate().GoToUrl(Settings.DockerBaseURL);
+            HomePage home = new HomePage(driver);
+            Login login = home.ClickOnSignInBtn();
+            profile = login.LoginWebsite("sindhupinky2@gmail.com", "abcd123");
+            profile.LoginSuccess();    
         }
 
         [BeforeScenario]
@@ -109,7 +115,12 @@ namespace SpecflowPM.Tests.Hooks
             //TODO: implement logic that has to run after executing each scenario
             //scenarioContext;
         }
-
+        [AfterFeature]
+        public static void AfterFeature(FeatureContext featureConte, IWebDriver driver)
+        {
+            Logout logout = new Logout(driver);
+            logout.ClickOnLogout();
+        }
         
         [AfterTestRun]
         public static void AfterTestRun(IWebDriver driver)

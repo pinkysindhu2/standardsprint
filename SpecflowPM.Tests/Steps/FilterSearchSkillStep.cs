@@ -55,12 +55,11 @@ namespace SpecflowPM.Tests.Steps
             searchService.VerifyResultwithFilter(totalSkills, filteredSkills, filter);
         }
 
-        [When(@"I enter (.*)")]
-        public void WhenIEnterCypress(string skill)
+        [When(@"I type (.*)")]
+        public void WhenITypeCypress(string skill)
         {
             searchService.TypeSkillIntoSearchBox(skill);
         }
-
 
         [Then(@"(.*)'s skills should be listed")]
         public void ThenPinkySinghSSkillsShouldBeListed(string traderName)

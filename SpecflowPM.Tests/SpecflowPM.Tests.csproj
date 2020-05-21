@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
@@ -10,15 +10,19 @@
     <PackageReference Include="nunit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.15.1" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.2.0" />
+    <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="80.0.3987.1600" />
-    <PackageReference Include="SpecFlow" Version="3.1.82" />
-    <PackageReference Include="SpecFlow.NUnit" Version="3.1.82" />
-    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.82" />
+    <PackageReference Include="SpecFlow" Version="3.1.95" />
+    <PackageReference Include="SpecFlow.NUnit" Version="3.1.95" />
+    <PackageReference Include="SpecFlow.Tools.MsBuild.Generation" Version="3.1.95" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="ExtendReport\" />
+    <Folder Include="Pages\Chat\" />
+    <Folder Include="Pages\ManageRequest\" />
+    <Folder Include="Pages\Notification\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -26,26 +30,152 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Feature\ExploreCategories.feature.cs">
+    <Compile Update="Feature\Account\ChangePassword.feature.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>ExploreCategories.feature</DependentUpon>
+      <DependentUpon>ChangePassword.feature</DependentUpon>
     </Compile>
-    <Compile Update="Feature\FilterSearchSkill.feature.cs">
+    <Compile Update="Feature\Account\Login.feature.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
-      <DependentUpon>FilterSearchSkill.feature</DependentUpon>
+      <DependentUpon>Login.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Account\Logout.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Logout.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Account\Registration.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Registration.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Chat\Chat.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Chat.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Search\CatSubCatSearch.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>CatSubCatSearch.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Search\FilterSearchService.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>FilterSearchService.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\ManageRequest\ManageRequest.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ManageRequest.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Notification\Notification.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Notification.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Certification.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Certification.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Description.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Description.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Education.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Education.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Language.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Language.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Profile.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Profile.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\Profile\Skill.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Skill.feature</DependentUpon>
+    </Compile>
+    <Compile Update="Feature\ShareAndManageSkills\ShareSkill.feature.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ShareSkill.feature</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <SpecFlowFeatureFiles Update="Feature\ExploreCategories.feature">
+    <SpecFlowFeatureFiles Update="Feature\Account\ChangePassword.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>ExploreCategories.feature.cs</LastGenOutput>
+      <LastGenOutput>ChangePassword.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
-    <SpecFlowFeatureFiles Update="Feature\FilterSearchSkill.feature">
+    <SpecFlowFeatureFiles Update="Feature\Account\Login.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>FilterSearchSkill.feature.cs</LastGenOutput>
+      <LastGenOutput>Login.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Account\Logout.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Logout.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Account\Registration.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Registration.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Chat\Chat.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Chat.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Search\CatSubCatSearch.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>CatSubCatSearch.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Search\FilterSearchService.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>FilterSearchService.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\ManageRequest\ManageRequest.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ManageRequest.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Notification\Notification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Notification.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Certification.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Certification.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Description.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Description.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Education.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Education.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Language.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Language.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Profile.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Profile.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\Profile\Skill.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>Skill.feature.cs</LastGenOutput>
+    </SpecFlowFeatureFiles>
+    <SpecFlowFeatureFiles Update="Feature\ShareAndManageSkills\ShareSkill.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>ShareSkill.feature.cs</LastGenOutput>
     </SpecFlowFeatureFiles>
   </ItemGroup>
 

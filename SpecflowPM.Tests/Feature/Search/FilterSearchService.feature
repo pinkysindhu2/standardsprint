@@ -1,5 +1,5 @@
-﻿Feature: FilterSearchSkill
-	Feature related to Search skill Result 
+﻿Feature: FilterSearchService
+	Feature related to Search service/skill Result 
 	which will be refined according to Filters,
 	Search bar and user name options
 
@@ -19,7 +19,7 @@ Examples:
 	| ShowAll |
 
 Scenario Outline: Filter Skill Results using Search bar
-	When I enter <Skill>
+	When I type <Skill>
 	Then Result should be displayed acording to <Skill> 
 Examples: 
 	| Skill    |
@@ -31,7 +31,7 @@ Examples:
 Scenario Outline: Filter Skill Results using both Search bar and Trader name
 	Given I type <TraderName> and select the trader
 	Then <TraderName>'s skills should be listed 
-	When I enter <Skill>
+	When I type <Skill>
 	Then Result should be displayed acording to <Skill> 
 Examples: 
 	| Skill    | TraderName  |
