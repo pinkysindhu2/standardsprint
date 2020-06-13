@@ -18,28 +18,25 @@ namespace ProjectMars.Framework.Extension
         }
         public static void setDate(this IWebElement element, string value)
         {
-            /* if (value != null)
-             {
-                 IList<string> txt = value.Split(splitChar);
-                 for (int i = 0; i < txt.Count; i++)
-                 {
-
-                     element.EnterText(txt[i]);
-                     //Global.GlobalDefinitions.wait(1);
-                     Console.WriteLine(txt[i]);
-                     if (i < txt.Count - 1)
-                     {
-                         element.EnterText(Keys.Tab);
-                     }
-
-                 }
-             }
-             else
-             {
-                 Console.WriteLine("{0} is null " + value);
-             }*/
+            if (value != null)
+            {
+                IList<string> txt = value.Split('/');
+                for (int i = 0; i < txt.Count; i++)
+                {
+                    element.EnterText(txt[i]);
+                    Console.WriteLine(txt[i]);
+                    if (i < txt.Count && i == 1)
+                    {
+                        element.EnterText(Keys.Tab);
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine($"{value} is null!");
+            }
             Console.WriteLine("Get the Date from Date Picker: " + element.GetAttribute("value"));
-            //string dateFormat = "dd/MM/yyyy";
+/*            //string dateFormat = "dd/MM/yyyy";
             string dateFormat = "ddMMyyyy";
             string newDate = DateTime.Parse(value).ToString(dateFormat);
 
@@ -48,7 +45,7 @@ namespace ProjectMars.Framework.Extension
             // a.keyDown(Keys.TAB).perform();
             //Driver.wait(30);
 
-            Console.WriteLine("Date Formated: " + newDate);
+            Console.WriteLine("Date Formated: " + newDate);*/
 
         }
 

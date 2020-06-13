@@ -11,8 +11,9 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
     {
         public ServiceListing(IWebDriver driver) : base(driver)
         {
-            ExcelHelper.PopulateInCollection("ExcelTestData/ShareSkillData.xlsx", "ShareSkill");
+            ExcelHelper.PopulateInCollection(PathHelper.GetCurrentPath("ExcelTestData/ShareSkillData.xlsx"), "ShareSkill");
         }
+
         #region Service Listing Page Elements 
         private IWebElement Title => Driver.WaitForElement(By.Name("title"));
         private IWebElement Description => Driver.WaitForElement(By.Name("description"));
@@ -24,17 +25,17 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
         //Select the Location Type
         private IWebElement LocationTypeOptions => Driver.WaitForElement(By.XPath("//form/div[6]/div[@class='twelve wide column']/div/div[@class='field']"));
         //Click on Start Date dropdown
-        /* private IWebElement StartDateDropDown => Driver.WaitForElement(By.Name("startDate"));
-         //Click on End Date dropdown
-         private IWebElement EndDateDropDown => Driver.WaitForElement(By.Name("endDate"));
-         //Storing the table of available days
-         private IWebElement Days => Driver.WaitForElement(By.XPath("//body/div/div/div[@id='service-listing-section']/div[@class='ui container']/div[@class='listing']/form[@class='ui form']/div[7]/div[2]/div[1]"));
-         //Storing the starttime
-         private IWebElement StartTime => Driver.WaitForElement(By.XPath("//div[3]/div[2]/input[1]"));
-         //Click on StartTime dropdown
-         private IWebElement StartTimeDropDown => Driver.WaitForElement(By.XPath("//div[3]/div[2]/input[1]"));
-         //Click on EndTime dropdown
-         private IWebElement EndTimeDropDown => Driver.WaitForElement(By.XPath("//div[3]/div[3]/input[1]"));*/
+        private IWebElement StartDateDropDown => Driver.WaitForElement(By.Name("startDate"));
+        //Click on End Date dropdown
+        private IWebElement EndDateDropDown => Driver.WaitForElement(By.Name("endDate"));
+        //Storing the table of available days
+        private IWebElement Days => Driver.WaitForElement(By.XPath("//body/div/div/div[@id='service-listing-section']/div[@class='ui container']/div[@class='listing']/form[@class='ui form']/div[7]/div[2]/div[1]"));
+        //Storing the starttime
+        private IWebElement StartTime => Driver.WaitForElement(By.XPath("//div[3]/div[2]/input[1]"));
+        //Click on StartTime dropdown
+        private IWebElement StartTimeDropDown => Driver.WaitForElement(By.XPath("//div[3]/div[2]/input[1]"));
+        //Click on EndTime dropdown
+        private IWebElement EndTimeDropDown => Driver.WaitForElement(By.XPath("//div[3]/div[3]/input[1]"));
         //Click on Skill Trade option
         private IWebElement SkillTradeOption => Driver.WaitForElement(By.XPath("//form/div[8]/div[@class='twelve wide column']/div/div[@class = 'field']"));
         //Enter Skill Exchange
@@ -50,68 +51,39 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
         private IWebElement CancelBtn => Driver.WaitForElement(By.CssSelector("input[value='Cancel']"));
         #endregion
 
-        public void EnterShareSkill()
+        public ManageListing EnterShareSkill()
         {
-            //Enter the data on HTML form
-            Title.EnterText(ExcelHelper.ReadData(2, "Title"));
+            EnterServiceDetails(2);   
             Driver.wait(10);
+            //Click on the Save button when the file is uploaded
+          /*  if(Driver.FindElement(By.CssSelector("i[class='icon huge circular file']")).Displayed)
+            {
+                // Click on Save button
+                SaveBtn.Click();
 
-            Description.EnterText(ExcelHelper.ReadData(2, "Description"));
-            Driver.wait(10);
+                return new ManageListing(Driver);
+            }*/
 
-            //Select Category and Subcategory
-            CategoryDropDown.selectFromDDL(ExcelHelper.ReadData(2, "Category"));
-            Driver.wait(10);
-            SubCategoryDropDown.selectFromDDL(ExcelHelper.ReadData(2, "SubCategory"));
-            Driver.wait(10);
-
-            //Enter tag
-            Tags.EnterText(ExcelHelper.ReadData(2, "Tags"));
-            Tags.EnterText(Keys.Enter);
-            Driver.wait(10);
-
-            //Select Radio button
-            selectServiceRadioButton(ServiceTypeOptions, ExcelHelper.ReadData(2, "ServiceType"));
-            Driver.wait(10);
-
-            selectLocationRadioButton(LocationTypeOptions, ExcelHelper.ReadData(2, "LocationType"));
-            Driver.wait(10);
-
-            // select start and end data and time
-            //selectStartDateAndTime(); 
-            Driver.wait(20);
-
-            // select skill trade: Skill exchange or credit
-            selectSkillTrade(SkillTradeOption, ExcelHelper.ReadData(2, "Credit"));
-            Driver.wait(10);
-
-            // Upload work sample.docx
-            fileUpload.Click();
-            FileUpload.uploadFileUsingAutoIT(PathHelper.GetCurrentPath("ExcelTestData/WorkSample.docx"));
-
-            Driver.wait(20);
-
-            // select Active Radio button: Active or Hidden
-            selectActiveRadioButton(ActiveOption, ExcelHelper.ReadData(2, "Active"));
-
-
-        }
-
-        internal ManageListing clickOnSaveBtn()
-        {
-            Driver.wait(20);
-            // Click on Save button
             SaveBtn.Click();
-            return new ManageListing();
-            
+            return new ManageListing(Driver);
+            //return null;
         }
-        // Update the description
-        internal string EditShareSkill()
+        
+        public Account.Profile CancelService()
         {
-            Description.Clear();
-            string str = "2 hours session for Selenium!";
-            Description.EnterText(str);
-            return str;
+            EnterServiceDetails(4);
+            Driver.wait(10);
+            CancelBtn.Click();
+            return new Account.Profile(Driver);
+        } 
+
+        // Update the description
+        public ManageListing EditShareSkill()
+        {
+            Description.Clear(); 
+            Description.EnterText(ExcelHelper.ReadData(3, "Description"));
+            SaveBtn.Click();
+            return new ManageListing(Driver);
         }
 
         // Select Radio button
@@ -139,7 +111,7 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
             }
         }
 
-       /* private void selectStartDateAndTime()
+        private void selectStartDateAndTime()
         {
 
             StartDateDropDown.setDate(ExcelHelper.ReadData(2, "Startdate"));
@@ -152,7 +124,7 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
             string weekDay = ExcelHelper.ReadData(2, "Selectday");
 
             switch (weekDay)
-            {   //MOnday is default value
+            {   //Monday is default value
                 case "Sun":
                     Days.FindElement(By.XPath("//div[2]/descendant::input[@index='0' and @name='Available']")).Click();
                     Days.FindElement(By.XPath("//div[2]/descendant::input[@index='0' and @name='StartTime']")).
@@ -204,7 +176,7 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
                     break;
             }
 
-        }*/
+        }
 
         private void selectSkillTrade(IWebElement element, string skillTrade)
         {
@@ -252,7 +224,6 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
             }
         }
 
-
         private void chooseSkillTrade(IWebElement element, string trade, string skillExc, string credit)
         {
             if (trade == "Skill-Exchange")
@@ -284,6 +255,52 @@ namespace SpecflowPM.Tests.Pages.ShareAndManageSkill
                     return;
                 }
             }
+        }
+
+        // This method is used to enter the service details from the excel file
+        private void EnterServiceDetails(int rowNUmber)
+        {
+            //Enter the data on HTML form
+            Title.EnterText(ExcelHelper.ReadData(rowNUmber, "Title"));
+            Driver.wait(10);
+
+            Description.EnterText(ExcelHelper.ReadData(rowNUmber, "Description"));
+            Driver.wait(10);
+
+            //Select Category and Subcategory
+            CategoryDropDown.selectFromDDL(ExcelHelper.ReadData(rowNUmber, "Category"));
+            Driver.wait(10);
+            SubCategoryDropDown.selectFromDDL(ExcelHelper.ReadData(rowNUmber, "SubCategory"));
+            Driver.wait(10);
+
+            //Enter tag
+            Tags.EnterText(ExcelHelper.ReadData(rowNUmber, "Tags"));
+            Tags.EnterText(Keys.Enter);
+            Driver.wait(10);
+
+            //Select Radio button
+            selectServiceRadioButton(ServiceTypeOptions, ExcelHelper.ReadData(rowNUmber, "ServiceType"));
+            Driver.wait(10);
+
+            selectLocationRadioButton(LocationTypeOptions, ExcelHelper.ReadData(rowNUmber, "LocationType"));
+            Driver.wait(10);
+
+            // select start and end data and time
+            selectStartDateAndTime();
+            Driver.wait(20);
+
+            // select skill trade: Skill exchange or credit
+            selectSkillTrade(SkillTradeOption, ExcelHelper.ReadData(rowNUmber, "Credit"));
+            Driver.wait(10);
+
+            // Upload work sample.docx
+            //fileUpload.Click();
+            //FileUpload.uploadFileUsingAutoIT(PathHelper.GetCurrentPath(@"ExcelTestData\WorkSample.docx"));
+
+            Driver.wait(20);
+
+            // select Active Radio button: Active or Hidden
+            selectActiveRadioButton(ActiveOption, ExcelHelper.ReadData(rowNUmber, "Active"));
         }
 
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 using ProjectMars.Framework.Extension;
 using NUnit.Framework;
+using SpecflowPM.Tests.Pages.ShareAndManageSkill;
 
 namespace SpecflowPM.Tests.Pages.Account
 {
@@ -52,6 +53,18 @@ namespace SpecflowPM.Tests.Pages.Account
         {
             profileName.Click();
             return new ProfileSettings(Driver);
+        }
+
+        public ServiceListing ClickOnShareSkillBtn()
+        {
+            shareSkillBtn.Click();
+            return new ServiceListing(Driver);
+        }
+
+        public ManageListing ClickOnManageListingTab()
+        {
+            manageListing.Click();
+            return new ManageListing(Driver);
         }
     }
 }

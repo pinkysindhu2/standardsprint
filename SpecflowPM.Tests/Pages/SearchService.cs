@@ -8,7 +8,7 @@ using Newtonsoft.Json;
 
 namespace SpecflowPM.Tests.Pages
 {
-    public class SearchService : BasePage
+    public class SearchService 
     {
         private readonly IWebDriver Driver;
 

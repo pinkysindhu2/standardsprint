@@ -42,7 +42,6 @@ namespace SpecflowPM.Tests.Steps.Account
             profile = login.LoginWebsite(email, password);
         }
 
-
         [Then(@"I should be in Profile page")]
         public void ThenIShouldBeInProfilePage()
         {

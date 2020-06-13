@@ -1,6 +1,7 @@
 ﻿using SpecflowPM.Tests.Pages.Account;
 using SpecflowPM.Tests.Pages.Home;
 using SpecflowPM.Tests.Pages.Profile;
+using SpecflowPM.Tests.Pages.ShareAndManageSkill;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -20,5 +21,8 @@ namespace SpecflowPM.Tests.Config
         public Description description { get; set; }
         public Certificate certificate { get; set; }
         public Skill skill { get; set; }
+        public ServiceListing service { get; set; }
+        public ServiceCompleteDetails viewService { get; set; }
+        public ManageListing manageListing { get; set; }
     }
 }

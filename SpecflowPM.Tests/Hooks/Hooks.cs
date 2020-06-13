@@ -32,6 +32,7 @@ namespace SpecflowPM.Tests.Hooks
             // Initiate the all the framework settings such as base url, extend reports
             new InitFrameworkHook().InitFramework(objectContainer);
 
+
         }
 
         [BeforeFeature]

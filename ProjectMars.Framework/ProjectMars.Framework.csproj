@@ -23,9 +23,12 @@
     <PackageReference Include="ExcelDataReader.DataSet" Version="3.6.0" />
     <PackageReference Include="ExtentReports.Core" Version="1.0.3" />
     <PackageReference Include="NUnit" Version="3.12.0" />
+    <PackageReference Include="Selenium.Chrome.WebDriver" Version="83.0.0" />
     <PackageReference Include="Selenium.Support" Version="3.141.0" />
     <PackageReference Include="Selenium.WebDriver" Version="3.141.0" />
+    <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="83.0.4103.3900" />
     <PackageReference Include="SpecFlow" Version="3.1.82" />
+    <PackageReference Include="WebDriver.ChromeDriver.win32" Version="83.0.4103.39" />
   </ItemGroup>
 
   <ItemGroup>
